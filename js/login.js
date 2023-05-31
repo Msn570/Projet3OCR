@@ -11,7 +11,7 @@ Form.addEventListener('submit', async (event) => {
         alert('Cases Non Remplies');
     }
     //verifie si l'user est connecté//
-    if (window.sessionStorage.getItem('token') !== null) {
+    if (localStorage.getItem('token') !== null) {
         alert('Déjà connecté');
     }
 
@@ -34,7 +34,7 @@ Form.addEventListener('submit', async (event) => {
 
         const result = await r.json();
         const token = result.token;
-        window.sessionStorage.setItem('token', token);
+        localStorage.setItem('token', token);
 
         alert('Connexion réussie');
 

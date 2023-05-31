@@ -84,13 +84,13 @@ const GalleryCreate = (works) => {
 GetWorks();
 GetCatergories();
 
-token = window.sessionStorage.getItem("token");
+token = localStorage.getItem("token");
 // si user connecté modification du bouton login en logout et ajout de la deconnexion//
-if (token.value !== null) {
+if (!!token) {
     logout = document.getElementById("log");
-    logout.innerHTML = "<a href=#>logout</a>";
-    logout.addEventListener('click', function () {
-        window.sessionStorage.removeItem("token");
+    logout.innerHTML = "<a href='#'>logout</a>";
+    logout.addEventListener('click', event => {
+        localStorage.removeItem("token");
         window.location.reload();
     });
 
@@ -113,8 +113,8 @@ if (token.value !== null) {
     header.insertAdjacentHTML('beforebegin', display);
 
     change = document.querySelector(".Change");
-    change.addEventListener('click', function () {
-        window.sessionStorage.removeItem("token");
+    change.addEventListener('click', event => {
+        localStorage.removeItem("token");
         window.location.reload();
     });
     //ajout des boutons de modification//
