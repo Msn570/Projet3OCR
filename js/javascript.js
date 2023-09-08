@@ -1,6 +1,7 @@
 const UrlAPI = "http://localhost:5678/api/";
 
 let works = [];
+
 //recupération des travaux depuis l'api//
 const GetWorks = async (FiltredCat = false) => {
     try {
@@ -13,7 +14,8 @@ const GetWorks = async (FiltredCat = false) => {
 
         const data = await r.json();
 
-        works = data;
+        works = data; 
+
         window.localStorage.setItem('works', JSON.stringify(works));
 
         if (FiltredCat) {
@@ -21,7 +23,6 @@ const GetWorks = async (FiltredCat = false) => {
         } else {
             GalleryCreate(works);
         }
-
 
     } catch (error) {
         alert(error.message);
@@ -37,9 +38,12 @@ const GetCatergories = async () => {
         }
     });
 
-    const filtre = document.querySelector("#filtre");
     const categories = await r.json();
+
+    const filtre = document.querySelector("#filtre");
+    
     let display = ''
+
     // création du bouton filtre tous + catégories//
     display += `<button class='btn' id="Tous"> Tous </button>` ;
     for (cat of categories) {
@@ -75,7 +79,6 @@ const GalleryCreate = (works) => {
                     <img src="${Prod.imageUrl}" alt="${Prod.title}">
                     <figcaption>${Prod.title}</figcaption>
                 </figure>`;
-
     }
 
     container.insertAdjacentHTML('beforeend', display);

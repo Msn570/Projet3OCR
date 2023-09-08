@@ -26,6 +26,7 @@ Form.addEventListener('submit', async (event) => {
                 password: Pass.value,
             })
         });
+        
         //si réponse de l'api autre que 200 = erreur//
         if (r.status !== 200) {
             const err = await response.json();

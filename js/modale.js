@@ -1,5 +1,3 @@
-
-
 let display = '';
 display += `
                     <div id="myModal" class="modal">
@@ -198,7 +196,6 @@ DisplayPro();
 //Supression d'un projet choisis //
 const DeleteFigure = async (figureId) => {
   try {
-
     const r = await fetch(UrlAPIworks + '/' + figureId, {
       method: "DELETE",
       headers: { Authorization: "Bearer " + token },
@@ -224,7 +221,7 @@ const DeleteFigure = async (figureId) => {
 const deleteAll = async () => {
   try {
     const works = await fetch(UrlAPIworks).then(r => r.json());
-    while (works.length > 0) {
+    while (works.length > 0) {  
       const figureId = works[0].id;
       const r = await fetch(UrlAPIworks + '/' + figureId, {
         method: "DELETE",
